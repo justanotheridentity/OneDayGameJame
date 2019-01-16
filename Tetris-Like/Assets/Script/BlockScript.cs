@@ -8,19 +8,13 @@ public class BlockScript : MonoBehaviour {
     public int type = 0;
     public bool isEnemy;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     void DestroyBlock()
     {
-        // Avec un manager d'unité, accès à une liste des différentes unitées. Spawn en fonction du type actuel
+        /* Avec un manager d'unité, accès à une liste des différentes unitées. Spawn en fonction du type actuel
+         * Retire le block de la grille
+         * Détruit l'objet
+         * */
+
     }
 
     public bool DetectionBlock()

@@ -14,11 +14,6 @@ public class DeplacementFormScript : MonoBehaviour {
         }
         StartCoroutine(DeplacementForme(1));
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     IEnumerator DeplacementForme(float tempsDeplacement)
     {
@@ -30,7 +25,7 @@ public class DeplacementFormScript : MonoBehaviour {
             {
                 foreach (GameObject block in blockChild)
                 {
-
+                    AjoutGrille(block.GetComponent<BlockScript>().position);
                 }
                 yield return new WaitForSeconds(tempsDeplacement);
             }
@@ -43,10 +38,10 @@ public class DeplacementFormScript : MonoBehaviour {
         StartCoroutine(DeplacementForme(tempsDeplacement));
     }
 
-    void AjoutGrille()
+    void AjoutGrille(Vector2 position)
     {
         /* Récupère la grille
-         * 
+         * Ajoute la position à la bonne place de la grille
          * 
          * 
          * */

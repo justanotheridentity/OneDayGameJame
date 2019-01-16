@@ -119,6 +119,7 @@ public class GrilleScript : MonoBehaviour {
                     {
                         Debug.Log("Test Destruction Ligne : K = " + k + " J = " + j);
                         grilleTerrain[k + 1, j] = grilleTerrain[k, j];
+                        grilleTerrain[k, j].GetComponent<BlockScript>().position = grilleTerrain[k, j].GetComponent<BlockScript>().position + new Vector2(1, 0);
                         grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x + 1, grilleTerrain[k, j].transform.position.y);
                         grilleTerrain[k, j] = null;
                     }

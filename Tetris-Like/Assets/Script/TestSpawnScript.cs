@@ -7,6 +7,8 @@ public class TestSpawnScript : MonoBehaviour {
     public GameObject prefab;
     public GrilleScript grille;
 
+    public bool isPlayerOne = true;
+
 	// Use this for initialization
 	void Start () {
         StartCoroutine(spawning());
@@ -18,6 +20,7 @@ public class TestSpawnScript : MonoBehaviour {
         GameObject gameObj;
         gameObj = Instantiate(prefab, transform.position, Quaternion.identity);
         gameObj.GetComponent<DeplacementFormScript>().grille = grille;
+        gameObj.GetComponent<DeplacementFormScript>().isPlayerOne = isPlayerOne;
         StartCoroutine(spawning());
     }
 }

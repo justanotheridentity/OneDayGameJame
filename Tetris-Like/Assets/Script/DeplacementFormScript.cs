@@ -10,12 +10,24 @@ public class DeplacementFormScript : MonoBehaviour {
     bool blockDetected = false;
     public bool isPlayerOne = true;
 
+    private int direction;
+
 
     // Use this for initialization
     void Start () {
+        if(isPlayerOne)
+        {
+            direction = 1;
+        }
+        else
+        {
+            direction = -1;
+        }
+
         foreach(Transform child in transform)
         {
             blockChild.Add(child.gameObject);
+            child.gameObject.GetComponent<BlockScript>().direction = direction;
         }
         StartCoroutine(DeplacementForme(1));
 	}
@@ -98,10 +110,10 @@ public class DeplacementFormScript : MonoBehaviour {
         }
         if (!blockDetected)
         {
-            transform.position = new Vector2(Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y));
+            transform.position = new Vector2(Mathf.RoundToInt(transform.position.x + direction), Mathf.RoundToInt(transform.position.y));
             foreach (GameObject child in blockChild)
             {
-                child.GetComponent<BlockScript>().position.x = child.GetComponent<BlockScript>().position.x + 1;
+                child.GetComponent<BlockScript>().position.x = child.GetComponent<BlockScript>().position.x + direction;
             }
             StartCoroutine(DeplacementForme(tempsDeplacement));
         }

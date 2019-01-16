@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TestLeaderboard.unity
     guid: a552bd9fd9dba7b4592aff33dfbd36db
   - enabled: 1
+    path: Assets/Scenes/TimotheSccene.unity
+    guid: 33814bd11d81cf544be494d06db3359d
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 17bf4384248a75442b5c295ccdb0e4e1
   m_configObjects: {}

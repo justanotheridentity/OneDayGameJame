@@ -11,12 +11,18 @@ public class BlockScript : MonoBehaviour {
     public int direction;
     private Vector2 decalage;
 
+    public List<Sprite> blockSprite;
+
     bool blockDetected = false;
 
     void Start()
     {
         position = transform.position;
         grille = transform.parent.gameObject.GetComponent<DeplacementFormScript>().grille;
+        type = Random.Range(1, 4);
+
+        gameObject.GetComponent<SpriteRenderer>().sprite = blockSprite[type-1];
+        
     }
 
     public void DestroyBlock()

@@ -11,6 +11,7 @@ public class DeplacementFormScript : MonoBehaviour {
     public bool isPlayerOne = true;
 
     private int direction;
+    public TestSpawnScript spawn;
 
 
     // Use this for initialization
@@ -29,7 +30,7 @@ public class DeplacementFormScript : MonoBehaviour {
             blockChild.Add(child.gameObject);
             child.gameObject.GetComponent<BlockScript>().direction = direction;
         }
-        StartCoroutine(DeplacementForme(1));
+        StartCoroutine(DeplacementForme(0.75f));
 	}
 
     private void Update()
@@ -116,6 +117,10 @@ public class DeplacementFormScript : MonoBehaviour {
                 child.GetComponent<BlockScript>().position.x = child.GetComponent<BlockScript>().position.x + direction;
             }
             StartCoroutine(DeplacementForme(tempsDeplacement));
+        }
+        if(blockDetected)
+        {
+            spawn.spawning();
         }
     }
 }

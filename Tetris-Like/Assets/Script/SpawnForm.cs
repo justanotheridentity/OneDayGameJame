@@ -40,7 +40,6 @@ public class SpawnForm : MonoBehaviour {
     {
         bordure = blockSprite.border;
         side = bordure.x;
-        CreateBlock(0.95f, 0, 0);
     }
 	
    private GameObject ChooseBlock (GameObject pieceParent , int numero)
@@ -104,7 +103,7 @@ public class SpawnForm : MonoBehaviour {
 
 
 
-    public void CreateBlock (float espacement, float xPos, float yPos)
+    public GameObject CreateBlock (float espacement, float xPos, float yPos)
     {
         string form = stringPiece[Random.Range(0, stringPiece.Length)];
         if (form == "I")
@@ -357,11 +356,8 @@ public class SpawnForm : MonoBehaviour {
                 LastBlockPostion = block.transform.position;
             }
         }
+        piece.AddComponent<DeplacementFormScript>();
+        return piece;
     }
 
-
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

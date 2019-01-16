@@ -83,7 +83,6 @@ public class DeplacementFormScript : MonoBehaviour {
                     canRotate = false;
                 }
             }
-            Debug.Log(canRotate);
             if(canRotate)
             {
                 foreach (GameObject child in blockChild)

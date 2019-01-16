@@ -62,13 +62,15 @@ public class GrilleScript : MonoBehaviour {
             {
                 switch (script.type)
                 {
-                    case 1:
+                    /* Thomas
+                     * case 1:
                         wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
                         break;
                     case 2:
                         wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
                         wallHealth[j].invulnerability = 2f;
                         break;
+                        */
                     case 3:
                         spawnSoldier.armyCount[j]++;
                         break;
@@ -81,13 +83,13 @@ public class GrilleScript : MonoBehaviour {
             {
                 switch (script.type)
                 {
-                    case 1:
+                    /*case 1:
                         wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
                         break;
                     case 2:
                         wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
                         wallHealthJ2[j].invulnerability = 2f;
-                        break;
+                        break;*/
                     case 3:
                         spawnSoldierJ2.armyCount[j]++;
                         break;

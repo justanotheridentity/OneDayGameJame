@@ -73,7 +73,7 @@ public class DeplacementFormScript : MonoBehaviour {
             }
         }
 
-        if(((Input.GetKeyDown(KeyCode.E) && isPlayerOne) || (Input.GetKeyDown(KeyCode.Keypad1) && !isPlayerOne)))
+        if(((Input.GetKeyDown(KeyCode.E) && isPlayerOne) || (Input.GetKeyDown(KeyCode.Keypad1) && !isPlayerOne)) && !blockDetected)
         {
             bool canRotate = true;
             foreach (GameObject child in blockChild)

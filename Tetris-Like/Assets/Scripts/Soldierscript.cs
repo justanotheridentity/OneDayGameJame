@@ -4,118 +4,165 @@ using UnityEngine;
 
 public class Soldierscript : MonoBehaviour {
 
-    //Paramètres soldat
-    [SerializeField]
-    private float soldierSpeed = 1f;
-    [SerializeField] 
-    private int soldierHP = 1;
-    [SerializeField]
-    private int soldierDamages = 1;
-
-    /*[SerializeField]
-    private float elitesoldierSpeed = 1f;
-    [SerializeField]
-    private int elitesoldierHP = 2;
-    [SerializeField]
-    private int elitesoldierDamages = 2;*/
-
-    public int damages;
-
-    [SerializeField]
-    private float shootingtime = 1f; //délai entre 2 tirs
-    private float time;
-
-    //States soldat
-    private bool Walking = true;
-    private bool Shooting = false;
-    //private bool Waiting = false;
-
-    RaycastHit2D detection; //y a-t-il un soldat devant moi? 
-    RaycastHit2D shoot; //gestion du tir
-
-    [SerializeField]
-    private float detectionRange = 1f;
-    [SerializeField]
-    private float shootingRange = 1f;
-
-    public Transform SightSpot;
-    //public LayerMask Soldier;
-
+    [Header("Paramètres soldat")]
     Rigidbody2D rb;
+    [SerializeField] float soldierSpeed = 1f;
+    [SerializeField] int soldierHP = 1;
+    [SerializeField] int soldierDamages = 1;
+    [SerializeField] int elitesoldierHP = 2;
+    [SerializeField] int elitesoldierDamages = 2;
 
-    [SerializeField]
-    private string currentTag;
+    [SerializeField] bool elite;
+    [SerializeField] bool Player1;
+
+    public int direction = 1; //utilisé pour déterminer la direction du personnage et de la balle
+
+    private bool walking;
+    private bool shooting;
+
+    [SerializeField] float detectionRange = 1f;
+    [SerializeField] float shootingRange = 1f;
+
+    [Header("Tir & Detections")]
+    public int damage;
+    [SerializeField] float shootingtime = 1f;
+    private float time;
+    public GameObject Bullet;
     
+    RaycastHit2D detection;
+    RaycastHit2D shoot;    
 
-	void Start () {
-        currentTag = gameObject.tag;
-        health = soldierHP;
-        damages = soldierDamages;
+    public Transform sightSpot;
+
+    [SerializeField] string currentTag;
+
+    HealthManager healthManager;
+    private GameObject gameManager;
+
+    void Start () {
         rb = gameObject.GetComponent<Rigidbody2D>();
-	}
-	
 
-	void Update () {
+        currentTag = gameObject.tag;
 
-        if (Walking)
+        walking = true;
+
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        healthManager = gameManager.GetComponent<HealthManager>();
+
+        if (elite)
         {
-            rb.velocity = new Vector2(1 * soldierSpeed, 0); //le soldat est un soldat de base qui va vers la droite
+            healthManager.health = elitesoldierHP;
+        }
+        else
+        {
+            healthManager.health = soldierHP;
         }
 
+        if (Player1)
+        {
+            direction = 1;
+        }
+        else
+        {
+            direction = -1;
+        }
+    }
+
+
+    void Update () {
+
+        Deplacement();
+        
         SearchAndDestroy();
 
-        if (Shooting)
+        if (shooting)
         {
-            Shoot();
+            Fire();
         }
 
-        Death();
 	}
+
+    void Deplacement()
+    {
+        if (walking)
+        {
+            rb.velocity = new Vector2(direction * soldierSpeed, 0);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+    }
+
+    void Detection()
+    {
+        detection = Physics2D.Raycast(sightSpot.position, new Vector2(detectionRange, 0));
+    }
 
     private void SearchAndDestroy()
     {
-        detection = Physics2D.Raycast(SightSpot.position, new Vector2 (detectionRange, 0));
+        Detection();
 
-        if (detection.collider != null)
+        if (detection.collider)
         {
-            if (detection.collider.tag == currentTag)
+            if (detection.collider.tag == currentTag) //détecte si il y a qqun devant et identifie si c'est un ennemi ou un allié
             {
-                Walking = false;
-                //Waiting = true; 
+                walking = false;                 
             }
             else if (detection.collider.tag != currentTag)
             {
-                Walking = false;
-                Shooting = true;
+                walking = false;
+                shooting = true;
             }
-        }
-        else
-        {
-            Walking = true;
-        }
-    }
-
-    private void Shoot()
-    {
-        if (time <= 0)
-        {
-            Fire();
-            time = shootingtime;
-        }
-        else
-        {
-            time -= Time.deltaTime;
-        }
+            else if (detection.collider == null)
+            {
+                walking = true;
+            }
+        }        
     }
 
     private void Fire()
-    {
-        shoot = Physics2D.Raycast(SightSpot.position, new Vector2(shootingRange, 0));
-        
-        if (shoot.collider != null)
-        {
-            GetComponent<Soldierscript>().TakeDamages(damages);
+    { 
+
+        if (time <= 0)
+        {            
+            time = shootingtime;
+            Instantiate(Bullet, sightSpot.position, sightSpot.rotation);
         }
+        else 
+        {
+            time -= Time.deltaTime;
+        }
+
+
+       if (shoot.collider != null)
+        {
+            healthManager.TakeDamages(damage);
+        }
+    }
+
+    /*private void Death()
+    {
+        if (healthManager.health <= 0)
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Die!");
+        }
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Elite")
+        {
+            damage = elitesoldierDamages;
+        }
+        else
+        {
+            damage = soldierDamages;
+        }
+
+        healthManager.TakeDamages(damage);
+        Destroy(collision.gameObject);
     }
 
 

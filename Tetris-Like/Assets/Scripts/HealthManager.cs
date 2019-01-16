@@ -6,10 +6,10 @@ public class HealthManager : MonoBehaviour {
 
     public int health;
 
-    public void TakeDamages(int damages)
+    public void TakeDamages(int damage)
     {
-        health -= damages;
-        Debug.Log("Hit!");
+        health -= damage;
+
     }
 
     public void Death()

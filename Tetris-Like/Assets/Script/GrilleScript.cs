@@ -132,9 +132,10 @@ public class GrilleScript : MonoBehaviour {
             {
                 for (int j = 1; j < 8; j++)
                 {
-                    if (grilleTerrain[k, j] != null)
+                    if (grilleTerrain[k, j] != null && grilleTerrain[k - 1, j] == null)
                     {
                         grilleTerrain[k - 1, j] = grilleTerrain[k, j];
+                        grilleTerrain[k, j].GetComponent<BlockScript>().position = grilleTerrain[k, j].GetComponent<BlockScript>().position + new Vector2(-1, 0);
                         grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x - 1, grilleTerrain[k, j].transform.position.y);
                         grilleTerrain[k, j] = null;
                     }

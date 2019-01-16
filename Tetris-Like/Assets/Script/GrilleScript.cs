@@ -160,4 +160,19 @@ public class GrilleScript : MonoBehaviour {
             grilleTerrain[27, j] = Instantiate(mur, new Vector3(27, j, 0), Quaternion.identity);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        for (int i = 0; i < 40; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (grilleTerrain[i, j] != null)
+                {
+                    Gizmos.DrawSphere(new Vector3(i, j, 0), 0.5f);
+                }
+            }
+        }
+    }
 }

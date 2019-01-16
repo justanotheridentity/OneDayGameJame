@@ -78,7 +78,7 @@ public class DeplacementFormScript : MonoBehaviour {
             bool canRotate = true;
             foreach (GameObject child in blockChild)
             {
-                if (child.GetComponent<BlockScript>().DetectionBlock() && child.GetComponent<BlockScript>().DetectionDeCote(1) && child.GetComponent<BlockScript>().DetectionDeCote(-1))
+                if (child.GetComponent<BlockScript>().DetectionBlock() || child.GetComponent<BlockScript>().DetectionDeCote(1) || child.GetComponent<BlockScript>().DetectionDeCote(-1))
                 {
                     canRotate = false;
                 }

@@ -35,7 +35,7 @@ public class GrilleScript : MonoBehaviour {
             }
         }
 
-        for (int i = 39; i > 26; i--)
+        for (int i = 39; i > 27; i--)
         {
             if (CheckLigne(i))
             {
@@ -68,50 +68,47 @@ public class GrilleScript : MonoBehaviour {
             if (grilleTerrain[i, j]!=null)
             {
                 BlockScript script = grilleTerrain[i, j].GetComponent<BlockScript>();
-                if (script != null)
+                if (i < 20)
                 {
-                    if (i < 20)
+                    switch (script.type)
                     {
-                        switch (script.type)
-                        {
-                            /* Thomas
-                             * case 1:
-                                wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                                break;
-                            case 2:
-                                wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                                wallHealth[j].invulnerability = 2f;
-                                break;
-                                */
-                            case 3:
-                                spawnSoldier.armyCount[j]++;
-                                break;
-                            case 4:
-                                spawnSoldier.greatArmyCount[j]++;
-                                break;
-                        }
+                        /* Thomas
+                         * case 1:
+                            wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                            break;
+                        case 2:
+                            wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                            wallHealth[j].invulnerability = 2f;
+                            break;
+                            */
+                        case 3:
+                            spawnSoldier.armyCount[j]++;
+                            break;
+                        case 4:
+                            spawnSoldier.greatArmyCount[j]++;
+                            break;
                     }
-                    else
-                    {
-                        switch (script.type)
-                        {
-                            /*case 1:
-                                wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                                break;
-                            case 2:
-                                wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                                wallHealthJ2[j].invulnerability = 2f;
-                                break;*/
-                            case 3:
-                                spawnSoldierJ2.armyCount[j]++;
-                                break;
-                            case 4:
-                                spawnSoldierJ2.greatArmyCount[j]++;
-                                break;
-                        }
-                    }
-                    script.DestroyBlock();
                 }
+                else
+                {
+                    switch (script.type)
+                    {
+                        /*case 1:
+                            wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                            break;
+                        case 2:
+                            wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                            wallHealthJ2[j].invulnerability = 2f;
+                            break;*/
+                        case 3:
+                            spawnSoldierJ2.armyCount[j]++;
+                            break;
+                        case 4:
+                            spawnSoldierJ2.greatArmyCount[j]++;
+                            break;
+                    }
+                }
+                script.DestroyBlock();
                 Destroy(grilleTerrain[i, j]);
                 grilleTerrain[i, j] = null;
             }

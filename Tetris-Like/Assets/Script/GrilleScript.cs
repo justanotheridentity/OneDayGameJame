@@ -7,6 +7,7 @@ public class GrilleScript : MonoBehaviour {
     public GameObject[,] grilleTerrain = new GameObject[13,9];
     public static GrilleScript instance;
     public GameObject mur;
+    public TestSpawnArmy spawnSoldier;
 
 
 	// Use this for initialization
@@ -45,8 +46,24 @@ public class GrilleScript : MonoBehaviour {
         Debug.Log(i);
         for(int j = 1; j < 8; j++)
         {
-            //Application des effets
-            grilleTerrain[i, j].GetComponent<BlockScript>().DestroyBlock();
+            BlockScript script = grilleTerrain[i, j].GetComponent<BlockScript>();
+            switch(script.type)
+            {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    spawnSoldier.armyCount[j]++;
+                    break;
+                case 4:
+                    spawnSoldier.greatArmyCount[j]++;
+                    break;
+            }
+
+            script.DestroyBlock();
             grilleTerrain[i, j] = null;
         }
         for(int k = i-1; k>=0; k--)

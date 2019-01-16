@@ -68,47 +68,50 @@ public class GrilleScript : MonoBehaviour {
             if (grilleTerrain[i, j]!=null)
             {
                 BlockScript script = grilleTerrain[i, j].GetComponent<BlockScript>();
-                if (i < 20)
+                if (script != null)
                 {
-                    switch (script.type)
+                    if (i < 20)
                     {
-                        /* Thomas
-                         * case 1:
-                            wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                            break;
-                        case 2:
-                            wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                            wallHealth[j].invulnerability = 2f;
-                            break;
-                            */
-                        case 3:
-                            spawnSoldier.armyCount[j]++;
-                            break;
-                        case 4:
-                            spawnSoldier.greatArmyCount[j]++;
-                            break;
+                        switch (script.type)
+                        {
+                            /* Thomas
+                             * case 1:
+                                wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                                break;
+                            case 2:
+                                wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                                wallHealth[j].invulnerability = 2f;
+                                break;
+                                */
+                            case 3:
+                                spawnSoldier.armyCount[j]++;
+                                break;
+                            case 4:
+                                spawnSoldier.greatArmyCount[j]++;
+                                break;
+                        }
                     }
-                }
-                else
-                {
-                    switch (script.type)
+                    else
                     {
-                        /*case 1:
-                            wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                            break;
-                        case 2:
-                            wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
-                            wallHealthJ2[j].invulnerability = 2f;
-                            break;*/
-                        case 3:
-                            spawnSoldierJ2.armyCount[j]++;
-                            break;
-                        case 4:
-                            spawnSoldierJ2.greatArmyCount[j]++;
-                            break;
+                        switch (script.type)
+                        {
+                            /*case 1:
+                                wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                                break;
+                            case 2:
+                                wallHealthJ2[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                                wallHealthJ2[j].invulnerability = 2f;
+                                break;*/
+                            case 3:
+                                spawnSoldierJ2.armyCount[j]++;
+                                break;
+                            case 4:
+                                spawnSoldierJ2.greatArmyCount[j]++;
+                                break;
+                        }
                     }
+                    script.DestroyBlock();
                 }
-                script.DestroyBlock();
                 Destroy(grilleTerrain[i, j]);
                 grilleTerrain[i, j] = null;
             }

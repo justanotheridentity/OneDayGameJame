@@ -95,7 +95,6 @@ public class DeplacementFormScript : MonoBehaviour {
 
     IEnumerator DeplacementForme(float tempsDeplacement)
     {
-        
         yield return new WaitForSeconds(tempsDeplacement);
         foreach(GameObject child in blockChild)
         {

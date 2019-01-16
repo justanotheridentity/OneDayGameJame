@@ -131,15 +131,15 @@ public class GrilleScript : MonoBehaviour {
         }
         else
         {
-            for (int k = i + 1; k < 40; k++)
+            for (int q = i + 1; q < 40; q++)
             {
-                for (int j = 1; j < 8; j++)
+                for (int s = 1; s < 8; s++)
                 {
-                    if (grilleTerrain[k, j] != null)
+                    if (grilleTerrain[q, s] != null)
                     {
-                        grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x - 1, grilleTerrain[k, j].transform.position.y);
-                        grilleTerrain[k - 1, j] = grilleTerrain[k, j];
-                        grilleTerrain[k, j] = null;
+                        grilleTerrain[q, s].transform.position = new Vector2(grilleTerrain[q, s].transform.position.x - 1, grilleTerrain[q, s].transform.position.y);
+                        grilleTerrain[q - 1, s] = grilleTerrain[q, s];
+                        grilleTerrain[q, s] = null;
                     }
                 }
             }
@@ -166,6 +166,21 @@ public class GrilleScript : MonoBehaviour {
         for (int j = 0; j < 8; j++)
         {
             grilleTerrain[27, j] = Instantiate(mur, new Vector3(27, j, 0), Quaternion.identity);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        for(int i = 0; i< 40; i++)
+        {
+            for(int j = 0; j<8; j++)
+            {
+                if (grilleTerrain[i, j] != null)
+                {
+                    Gizmos.DrawSphere(new Vector3(i, j, 0), 0.5f);
+                }
+            }
         }
     }
 }

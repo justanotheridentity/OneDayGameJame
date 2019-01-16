@@ -40,12 +40,12 @@ public class SpawnForm : MonoBehaviour {
     {
         bordure = blockSprite.border;
         side = bordure.x;
-
+        CreateBlock(0.95f, 0, 0);
     }
 	
    private GameObject ChooseBlock (GameObject pieceParent , int numero)
    {
-        randomBlock = Random.Range(0, 4);
+        randomBlock = Random.Range(0, 6);
 
         switch(randomBlock)
         {
@@ -88,6 +88,15 @@ public class SpawnForm : MonoBehaviour {
                 BlockScript blockScriptD = block.AddComponent<BlockScript>();
                 blockScriptD.type = 4;
                 break;
+            default:
+                block = new GameObject("block" + numero.ToString() + "base");
+                SpriteRenderer rendererE = block.AddComponent<SpriteRenderer>();
+                rendererE.sprite = blockSprite;
+                block.transform.parent = pieceParent.transform;
+
+                BlockScript blockScriptE = block.AddComponent<BlockScript>();
+                blockScriptE.type = 0;
+                break;
         }
         
         return block;
@@ -102,7 +111,7 @@ public class SpawnForm : MonoBehaviour {
         {
             piece = new GameObject("pieceI");
             piece.transform.position = new Vector2(xPos, yPos);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 //nom = "block" + i.ToString();
                 block = ChooseBlock(piece, i);

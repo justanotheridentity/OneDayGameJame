@@ -5,9 +5,10 @@ using UnityEngine;
 public class DeplacementFormScript : MonoBehaviour {
 
     public List<GameObject> blockChild;
+    public GrilleScript grille;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         foreach(Transform child in transform)
         {
             blockChild.Add(child.gameObject);
@@ -15,9 +16,50 @@ public class DeplacementFormScript : MonoBehaviour {
         StartCoroutine(DeplacementForme(1));
 	}
 
+    private void Update()
+    {
+        bool blockedArea = false;
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            foreach (GameObject child in blockChild)
+            {
+                if (child.GetComponent<BlockScript>().DetectionDeCote(1))
+                {
+                    blockedArea = true;
+                }
+            }
+            if (!blockedArea)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+                foreach (GameObject child in blockChild)
+                {
+                    child.GetComponent<BlockScript>().position = new Vector2(child.GetComponent<BlockScript>().position.x, child.GetComponent<BlockScript>().position.y + 1);
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            foreach (GameObject child in blockChild)
+            {
+                if (child.GetComponent<BlockScript>().DetectionDeCote(-1))
+                {
+                    blockedArea = true;
+                }
+            }
+            if (!blockedArea)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+                foreach (GameObject child in blockChild)
+                {
+                    child.GetComponent<BlockScript>().position = new Vector2(child.GetComponent<BlockScript>().position.x, child.GetComponent<BlockScript>().position.y - 1);
+                }
+            }
+        }
+    }
+
     IEnumerator DeplacementForme(float tempsDeplacement)
     {
-
+        bool blockDetected = false;
         yield return new WaitForSeconds(tempsDeplacement);
         foreach(GameObject child in blockChild)
         {
@@ -25,25 +67,19 @@ public class DeplacementFormScript : MonoBehaviour {
             {
                 foreach (GameObject block in blockChild)
                 {
-                    AjoutGrille(block.GetComponent<BlockScript>().position);
+                    grille.UpdateGrille(block.GetComponent<BlockScript>().position, block);
                 }
-                yield return new WaitForSeconds(tempsDeplacement);
+                blockDetected = true;
             }
         }
-        transform.position = new Vector2(Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y));
-        foreach (GameObject child in blockChild)
+        if (!blockDetected)
         {
-            child.GetComponent<BlockScript>().position.x = child.GetComponent<BlockScript>().position.x + 1;
+            transform.position = new Vector2(Mathf.RoundToInt(transform.position.x + 1), Mathf.RoundToInt(transform.position.y));
+            foreach (GameObject child in blockChild)
+            {
+                child.GetComponent<BlockScript>().position.x = child.GetComponent<BlockScript>().position.x + 1;
+            }
+            StartCoroutine(DeplacementForme(tempsDeplacement));
         }
-        StartCoroutine(DeplacementForme(tempsDeplacement));
-    }
-
-    void AjoutGrille(Vector2 position)
-    {
-        /* Récupère la grille
-         * Ajoute la position à la bonne place de la grille
-         * 
-         * 
-         * */
     }
 }

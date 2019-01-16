@@ -40,7 +40,6 @@ public class Grid : MonoBehaviour {
         return check;
     }
 
-
     public void AddBlock (GameObject objet, int X, int Y)
     {
         if (tableauGrille == null)
@@ -56,7 +55,7 @@ public class Grid : MonoBehaviour {
 
 
     #region Destroy
-    private void LineDestroy (int numLine)
+    public void LineDestroy (int numLine)
     {
         GameObject tampon = null;
 

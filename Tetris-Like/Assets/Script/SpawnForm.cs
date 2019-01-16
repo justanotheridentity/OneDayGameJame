@@ -11,8 +11,15 @@ public class SpawnForm : MonoBehaviour {
     public Sprite superMur;
     public Sprite caserne;
     public Sprite superCaserne;
-    
+
+    [Header("A IMPORTER DE GRILLE")]
+    public int largeur = 6;
+    public int hauteur = 14;
+
     //Variables
+    private int largeurTemp;
+    private int hauteurTemp;
+
     private Vector4 bordure;
     private float side;
     private string nom;
@@ -99,22 +106,25 @@ public class SpawnForm : MonoBehaviour {
             {
                 //nom = "block" + i.ToString();
                 block = ChooseBlock(piece, i);
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
 
                 if (i==0)
                 {
                     block.transform.position = piece.transform.position;
+                    largeurTemp = (int)Mathf.Ceil(largeur / 3);
+                    hauteurTemp = hauteur;
+                    blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                     //position = largeur /3 ;(arrondi)
                     //on le met dans la grille
 
                     //position =  Mathf.Ceil(position);
-
-
 
                 }
                 else
                 {
                     
                     block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                    blockScriptPos.position = new Vector2(hauteurTemp + 1, largeurTemp);
                     //position ++;
                     //on met le block dans la grille
                 }
@@ -133,24 +143,30 @@ public class SpawnForm : MonoBehaviour {
             for (int i = 0; i < 4; i++)
             {
                 block = ChooseBlock(piece, i);
-
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
                 switch (i)
                 { 
                     case 0:
                         block.transform.position = piece.transform.position;
+                        largeurTemp = (int)Mathf.Ceil(largeur / 3);
+                        hauteurTemp = hauteur;
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                         //position = largeur /3 ;(arrondi)
                         //on le met dans la grille
                         //position =  Mathf.Ceil(position);
                         break;
                     case 2:
                         block.transform.position = new Vector2(LastBlockPostion.x , LastBlockPostion.y + side + espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp + 1);
                         break;
                     case 3:
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y - side - espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp +1 , largeurTemp - 1);
                         break;
                     default:
                         
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                        blockScriptPos.position = new Vector2(hauteurTemp + 1, largeurTemp);
                         //position ++;
                         //on met le block dans la grille
                         break;
@@ -165,21 +181,26 @@ public class SpawnForm : MonoBehaviour {
             for (int i = 0; i < 4; i++)
             {
                 block = ChooseBlock(piece, i);
-
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
                 switch (i)
                 {
                     case 0:
                         block.transform.position = piece.transform.position;
+                        largeurTemp = (int)Mathf.Ceil(largeur / 3);
+                        hauteurTemp = hauteur;
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                         //position = largeur /3 ;(arrondi)
                         //on le met dans la grille
                         //position =  Mathf.Ceil(position);
                         break;
                     case 3:
                         block.transform.position = new Vector2(LastBlockPostion.x , LastBlockPostion.y + side + espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp + 1);
                         break;
                     default:
                         
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                        blockScriptPos.position = new Vector2(hauteurTemp + 1, largeurTemp);
                         //position ++;
                         //on met le block dans la grille
                         break;
@@ -194,21 +215,26 @@ public class SpawnForm : MonoBehaviour {
             for (int i = 0; i < 4; i++)
             {
                 block = ChooseBlock(piece, i);
-
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
                 switch (i)
                 {
                     case 0:
                         block.transform.position = piece.transform.position;
+                        largeurTemp = (int)Mathf.Ceil(largeur / 3);
+                        hauteurTemp = hauteur;
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                         //position = largeur /3 ;(arrondi)
                         //on le met dans la grille
                         //position =  Mathf.Ceil(position);
                         break;
                     case 3:
                         block.transform.position = new Vector2(LastBlockPostion.x, LastBlockPostion.y - side - espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp - 1);
                         break;
                     default:
                         
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                        blockScriptPos.position = new Vector2(hauteurTemp + 1, largeurTemp);
                         //position ++;
                         //on met le block dans la grille
                         break;
@@ -223,24 +249,30 @@ public class SpawnForm : MonoBehaviour {
             for (int i = 0; i < 4; i++)
             {
                 block = ChooseBlock(piece, i);
-
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
                 switch (i)
                 {
                     case 0:
                         block.transform.position = piece.transform.position;
+                        largeurTemp = (int)Mathf.Ceil(largeur / 3);
+                        hauteurTemp = hauteur;
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                         //position = largeur /3 ;(arrondi)
                         //on le met dans la grille
                         //position =  Mathf.Ceil(position);
                         break;
                     case 2:
                         block.transform.position = new Vector2(LastBlockPostion.x, LastBlockPostion.y - side - espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp - 1);
                         break;
                     case 3:
                         block.transform.position = new Vector2(LastBlockPostion.x - side - espacement, LastBlockPostion.y );
+                        blockScriptPos.position = new Vector2(hauteurTemp -1 , largeurTemp );
                         break;
                     default:
                         
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                        blockScriptPos.position = new Vector2(hauteurTemp + 1, largeurTemp);
                         //position ++;
                         //on met le block dans la grille
                         break;
@@ -255,21 +287,26 @@ public class SpawnForm : MonoBehaviour {
             for (int i = 0; i < 4; i++)
             {
                 block = ChooseBlock(piece, i);
-
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
                 switch (i)
                 {
+
                     case 0:
                         block.transform.position = piece.transform.position;
-                        //position = largeur /3 ;(arrondi)
+                        largeurTemp = (int) Mathf.Ceil(largeur / 3);
+                        hauteurTemp = hauteur;
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                         //on le met dans la grille
                         //position =  Mathf.Ceil(position);
                         break;
                     case 2:
                         block.transform.position = new Vector2(LastBlockPostion.x, LastBlockPostion.y - side - espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp-1);
                         break;
                     default:
                         
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                        blockScriptPos.position = new Vector2(hauteurTemp +1, largeurTemp);
                         //position ++;
                         //on met le block dans la grille
                         break;
@@ -284,21 +321,26 @@ public class SpawnForm : MonoBehaviour {
             for (int i = 0; i < 4; i++)
             {
                 block = ChooseBlock(piece, i);
-
+                BlockScript blockScriptPos = block.GetComponent<BlockScript>();
                 switch (i)
                 {
                     case 0:
                         block.transform.position = piece.transform.position;
+                        largeurTemp = (int)Mathf.Ceil(largeur / 3);
+                        hauteurTemp = hauteur;
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp);
                         //position = largeur /3 ;(arrondi)
                         //on le met dans la grille
                         //position =  Mathf.Ceil(position);
                         break;
                     case 2:
                         block.transform.position = new Vector2(LastBlockPostion.x, LastBlockPostion.y + side + espacement);
+                        blockScriptPos.position = new Vector2(hauteurTemp, largeurTemp + 1);
                         break;
                     default:
                         
                         block.transform.position = new Vector2(LastBlockPostion.x + side + espacement, LastBlockPostion.y);
+                        blockScriptPos.position = new Vector2(hauteurTemp + 1, largeurTemp);
                         //position ++;
                         //on met le block dans la grille
                         break;

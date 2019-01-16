@@ -27,14 +27,22 @@ public class GrilleScript : MonoBehaviour {
         {
             if (CheckLigne(i))
             {
+                if(i==0)
+                {
+                    //Ecran de fin
+                }
                 DestroyLigne(i);
             }
         }
 
-        for (int i = 39; i > 27; i--)
+        for (int i = 39; i > 26; i--)
         {
             if (CheckLigne(i))
             {
+                if(i==39)
+                {
+                    //Ecran de fin
+                }
                 DestroyLigne(i);
             }
         }

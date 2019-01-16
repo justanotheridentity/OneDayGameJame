@@ -11,13 +11,13 @@ public class TestSpawnArmy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(spawnArmy());
-        for (int i = 0; i < armyCount.Count - 1; i++)
+        for (int i = 0; i < 9; i++)
         {
-            armyCount[i] = 0;
+            armyCount.Add(0);
         }
-        for (int i = 0; i < greatArmyCount.Count - 1; i++)
+        for (int i = 0; i < 9; i++)
         {
-            greatArmyCount[i] = 0;
+            greatArmyCount.Add(0);
         }
     }
 	
@@ -29,7 +29,7 @@ public class TestSpawnArmy : MonoBehaviour {
             if(armyCount[i]>0)
             {
                 armyCount[i]--;
-                Instantiate(prefab, transform.position, Quaternion.identity);
+                Instantiate(prefab, transform.position + 4 * Vector3.down + Vector3.up * i, Quaternion.identity);
             }
         }
 
@@ -38,7 +38,7 @@ public class TestSpawnArmy : MonoBehaviour {
             if (greatArmyCount[i] > 0)
             {
                 greatArmyCount[i]--;
-                Instantiate(prefab, transform.position, Quaternion.identity);
+                Instantiate(prefab, transform.position + 4 * Vector3.down + Vector3.up * i, Quaternion.identity);
             }
         }
 

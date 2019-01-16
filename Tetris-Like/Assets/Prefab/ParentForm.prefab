@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
-  type: 0
+  type: 3
   isEnemy: 0
 --- !u!114 &114521549352948516
 MonoBehaviour:
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockChild: []
   grille: {fileID: 0}
+  isPlayerOne: 1
 --- !u!114 &114677178636402922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
-  type: 0
+  type: 3
   isEnemy: 0
 --- !u!114 &114873394888634830
 MonoBehaviour:
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
-  type: 0
+  type: 3
   isEnemy: 0
 --- !u!114 &114920431311553182
 MonoBehaviour:
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
-  type: 0
+  type: 3
   isEnemy: 0
 --- !u!212 &212335087325894052
 SpriteRenderer:

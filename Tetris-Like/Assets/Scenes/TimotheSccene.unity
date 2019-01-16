@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mur: {fileID: 1407654226533332, guid: ccc497b6517345b468b09f0369eed7a8, type: 2}
+  spawnSoldier: {fileID: 2089140885}
 --- !u!4 &170388771
 Transform:
   m_ObjectHideFlags: 0
@@ -302,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1407654226533332, guid: ccc497b6517345b468b09f0369eed7a8, type: 2}
   armyCount: 
+  greatArmyCount: 
 --- !u!4 &2089140886
 Transform:
   m_ObjectHideFlags: 0

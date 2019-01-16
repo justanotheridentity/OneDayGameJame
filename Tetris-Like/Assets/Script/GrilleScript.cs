@@ -100,10 +100,10 @@ public class GrilleScript : MonoBehaviour {
                             break;
                     }
                 }
-
                 script.DestroyBlock();
+                Destroy(grilleTerrain[i, j]);
+                grilleTerrain[i, j] = null;
             }
-            grilleTerrain[i, j] = null;
         }
 
         if (i < 20)

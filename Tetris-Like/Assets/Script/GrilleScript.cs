@@ -19,9 +19,12 @@ public class GrilleScript : MonoBehaviour {
         InitialiseGrid();
 	}
 	
-    public void UpdateGrille(Vector2 position, GameObject newBlock)
+    public void UpdateGrille(List<GameObject> newBlock)
     {
-        grilleTerrain[Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)] = newBlock;
+        foreach (GameObject block in newBlock)
+        {
+            grilleTerrain[Mathf.RoundToInt(block.GetComponent<BlockScript>().position.x), Mathf.RoundToInt(block.GetComponent<BlockScript>().position.y)] = block;
+        }
 
         for (int i = 0; i < 12; i++)
         {
@@ -102,8 +105,8 @@ public class GrilleScript : MonoBehaviour {
                 }
                 script.DestroyBlock();
                 Destroy(grilleTerrain[i, j]);
-                grilleTerrain[i, j] = null;
             }
+            grilleTerrain[i, j] = null;
         }
 
         if (i < 20)
@@ -112,10 +115,11 @@ public class GrilleScript : MonoBehaviour {
             {
                 for (int j = 1; j < 8; j++)
                 {
-                    if (grilleTerrain[k, j] != null)
+                    if (grilleTerrain[k, j] != null && grilleTerrain[k + 1, j] == null)
                     {
-                        grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x + 1, grilleTerrain[k, j].transform.position.y);
+                        Debug.Log("Test Destruction Ligne : K = " + k + " J = " + j);
                         grilleTerrain[k + 1, j] = grilleTerrain[k, j];
+                        grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x + 1, grilleTerrain[k, j].transform.position.y);
                         grilleTerrain[k, j] = null;
                     }
                 }
@@ -129,8 +133,8 @@ public class GrilleScript : MonoBehaviour {
                 {
                     if (grilleTerrain[k, j] != null)
                     {
-                        grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x - 1, grilleTerrain[k, j].transform.position.y);
                         grilleTerrain[k - 1, j] = grilleTerrain[k, j];
+                        grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x - 1, grilleTerrain[k, j].transform.position.y);
                         grilleTerrain[k, j] = null;
                     }
                 }

@@ -101,10 +101,7 @@ public class DeplacementFormScript : MonoBehaviour {
         {
             if(child.GetComponent<BlockScript>().DetectionBlock())
             {
-                foreach (GameObject block in blockChild)
-                {
-                    grille.UpdateGrille(block.GetComponent<BlockScript>().position, block);
-                }
+                grille.UpdateGrille(blockChild);
                 blockDetected = true;
             }
         }

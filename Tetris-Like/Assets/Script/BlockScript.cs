@@ -11,6 +11,8 @@ public class BlockScript : MonoBehaviour {
     private int direction;
     private Vector2 decalage;
 
+    bool blockDetected = false;
+
     void Start()
     {
         position = transform.position;
@@ -30,12 +32,14 @@ public class BlockScript : MonoBehaviour {
         /* Avec un manager d'unité, accès à une liste des différentes unitées. Spawn en fonction du type actuel
          * */
 
+        Debug.Log("Test");
+
         Destroy(gameObject);
     }
 
     public bool DetectionBlock()
     {
-        bool blockDetected = false;
+        
         /* Appel du script de la Grille, pour récupérer le tableau
          * Si position.x-/+ (En fonction de is enemy)1 != null
          * Fin déplacement.
@@ -61,5 +65,12 @@ public class BlockScript : MonoBehaviour {
         }
 
         return blockDetected;
+    }
+
+    public void Rotate(Vector2 localPosition, Vector2 parentPosition)
+    {
+        Vector2 newLocalPosition = new Vector2(localPosition.y, -localPosition.x);
+        position = parentPosition + newLocalPosition;
+        transform.position = position;
     }
 }

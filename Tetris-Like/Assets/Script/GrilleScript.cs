@@ -42,10 +42,24 @@ public class GrilleScript : MonoBehaviour {
 
     void DestroyLigne(int i)
     {
-        for(int j = 0; j < 7; j++)
+        Debug.Log(i);
+        for(int j = 1; j < 8; j++)
         {
+            //Application des effets
             grilleTerrain[i, j].GetComponent<BlockScript>().DestroyBlock();
             grilleTerrain[i, j] = null;
+        }
+        for(int k = i-1; k>=0; k--)
+        {
+            for (int j = 1; j < 8; j++)
+            {
+                if(grilleTerrain[k, j] != null)
+                {
+                    grilleTerrain[k, j].transform.position = new Vector2(grilleTerrain[k, j].transform.position.x + 1, grilleTerrain[k, j].transform.position.y);
+                    grilleTerrain[k + 1, j] = grilleTerrain[k, j];
+                    grilleTerrain[k, j] = null;
+                }
+            }
         }
     }
 

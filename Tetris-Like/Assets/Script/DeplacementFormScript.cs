@@ -7,6 +7,10 @@ public class DeplacementFormScript : MonoBehaviour {
     public List<GameObject> blockChild;
     public GrilleScript grille;
 
+    bool blockDetected = false;
+    public bool isPlayerOne = true;
+
+
     // Use this for initialization
     void Start () {
         foreach(Transform child in transform)
@@ -19,7 +23,7 @@ public class DeplacementFormScript : MonoBehaviour {
     private void Update()
     {
         bool blockedArea = false;
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(((Input.GetKeyDown(KeyCode.Z)&&isPlayerOne) || (Input.GetKeyDown(KeyCode.UpArrow) && !isPlayerOne)) && !blockDetected)
         {
             foreach (GameObject child in blockChild)
             {
@@ -37,7 +41,7 @@ public class DeplacementFormScript : MonoBehaviour {
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (((Input.GetKeyDown(KeyCode.S) && isPlayerOne) || (Input.GetKeyDown(KeyCode.DownArrow) && !isPlayerOne)) && !blockDetected)
         {
             foreach (GameObject child in blockChild)
             {
@@ -55,11 +59,31 @@ public class DeplacementFormScript : MonoBehaviour {
                 }
             }
         }
+
+        if(((Input.GetKeyDown(KeyCode.E) && isPlayerOne) || (Input.GetKeyDown(KeyCode.Keypad1) && !isPlayerOne)))
+        {
+            bool canRotate = true;
+            foreach (GameObject child in blockChild)
+            {
+                if (child.GetComponent<BlockScript>().DetectionBlock() && child.GetComponent<BlockScript>().DetectionDeCote(1) && child.GetComponent<BlockScript>().DetectionDeCote(-1))
+                {
+                    canRotate = false;
+                }
+            }
+            Debug.Log(canRotate);
+            if(canRotate)
+            {
+                foreach (GameObject child in blockChild)
+                {
+                    child.GetComponent<BlockScript>().Rotate(child.transform.localPosition, transform.position);
+                }
+            }
+        }
     }
 
     IEnumerator DeplacementForme(float tempsDeplacement)
     {
-        bool blockDetected = false;
+        
         yield return new WaitForSeconds(tempsDeplacement);
         foreach(GameObject child in blockChild)
         {

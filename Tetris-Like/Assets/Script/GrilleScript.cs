@@ -31,7 +31,7 @@ public class GrilleScript : MonoBehaviour {
             }
         }
 
-        for (int i = 39; i > 28; i--)
+        for (int i = 39; i > 27; i--)
         {
             if (CheckLigne(i))
             {

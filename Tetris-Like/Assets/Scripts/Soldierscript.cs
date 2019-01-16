@@ -17,6 +17,7 @@ public class Soldierscript : MonoBehaviour {
 
     public int direction = 1; //utilisé pour déterminer la direction du personnage et de la balle
 
+
     private bool walking;
     private bool shooting;
 

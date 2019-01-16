@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Ramdomizer : MonoBehaviour {
 
     public Text score;
@@ -22,9 +23,17 @@ public class Ramdomizer : MonoBehaviour {
     private float highscore4;
     private float highscore5;
 
+    public Text PlayerBad;
+    public Text HighscoreBad;
+    public Text RankBad;
+
     public float test;
 
     public InputField highscoreName;
+
+    private bool credited;
+
+    public Button playAgain;
 
     void Start()
     {
@@ -39,6 +48,8 @@ public class Ramdomizer : MonoBehaviour {
         Player3.text = PlayerPrefs.GetString("Player3", "ARTHUR");
         Player4.text = PlayerPrefs.GetString("Player4", "TIMOTHE");
         Player5.text = PlayerPrefs.GetString("Player5", "THOMAS");
+        credited = false;
+        playAgain.transform.position = new Vector3(7140.6f, -4570.7f, 0);
     }
 
     public void UpdateScore()
@@ -69,30 +80,40 @@ public class Ramdomizer : MonoBehaviour {
             {
                 Player5.text = highscoreName.text.ToUpper();
                 PlayerPrefs.SetString("Player5", highscoreName.text.ToUpper());
+                playAgain.transform.position = new Vector3(1680.6f, 80f, 0);
             }
             else
             if (Player4.text == "")
             {
                 Player4.text = highscoreName.text.ToUpper();
                 PlayerPrefs.SetString("Player4", highscoreName.text.ToUpper());
+                playAgain.transform.position = new Vector3(1680.6f, 80f, 0);
             }
             else
             if (Player3.text == "")
             {
                 Player3.text = highscoreName.text.ToUpper();
                 PlayerPrefs.SetString("Player3", highscoreName.text.ToUpper());
+                playAgain.transform.position = new Vector3(1680.6f, 80f, 0);
             }
             else
             if (Player2.text == "")
             {
                 Player2.text = highscoreName.text.ToUpper();
                 PlayerPrefs.SetString("Player2", highscoreName.text.ToUpper());
+                playAgain.transform.position = new Vector3(1680.6f, 80f, 0);
             }
             else 
             if (Player1.text == "")
             {
                 Player1.text = highscoreName.text.ToUpper();
                 PlayerPrefs.SetString("Player1", highscoreName.text.ToUpper());
+                playAgain.transform.position = new Vector3(1680.6f, 80f, 0);
+            }
+            else
+            {
+                PlayerBad.text = highscoreName.text.ToUpper();
+                playAgain.transform.position = new Vector3(1680.6f, 80f, 0);
             }
         }
     }
@@ -100,6 +121,9 @@ public class Ramdomizer : MonoBehaviour {
     public void TimeStamp()
     {
         float timer = test;
+        PlayerBad.text = "";
+        HighscoreBad.text = "";
+        RankBad.text = "";
 
         if (timer < PlayerPrefs.GetFloat("Highscore1", 10))
         {
@@ -180,6 +204,16 @@ public class Ramdomizer : MonoBehaviour {
             Player5.text = "";
             PlayerPrefs.SetString("Player5", "");
         }
+        else
+        {
+            PlayerBad.text = "";
+            HighscoreBad.text = timer.ToString();
+            RankBad.text = "...";
+        }
+    }
 
+    public void Replay()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

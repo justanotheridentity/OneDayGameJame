@@ -8,7 +8,7 @@ public class GrilleScript : MonoBehaviour {
     public static GrilleScript instance;
     public GameObject mur;
     public TestSpawnArmy spawnSoldier;
-
+    public List<HealthManager> wallHealth;
 
 	// Use this for initialization
 	void Start () {
@@ -50,10 +50,11 @@ public class GrilleScript : MonoBehaviour {
             switch(script.type)
             {
                 case 1:
-
+                    wallHealth[j].health += Mathf.RoundToInt(0.1f*wallHealth[j].maxHealth);
                     break;
                 case 2:
-
+                    wallHealth[j].health += Mathf.RoundToInt(0.1f * wallHealth[j].maxHealth);
+                    wallHealth[j].invulnerability = 2f;
                     break;
                 case 3:
                     spawnSoldier.armyCount[j]++;

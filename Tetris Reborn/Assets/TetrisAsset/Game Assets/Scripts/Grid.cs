@@ -25,6 +25,7 @@ public class Grid : MonoBehaviour {
     // destroy the row at y line
     public static void deleteRow(int x) {
         for (int y = 0; y < h; y++) {
+            grid[x, y].gameObject.GetComponent<BlockScript>().estDetruit();
             Destroy(grid[x, y].gameObject);
             grid[x, y] = null;
         }

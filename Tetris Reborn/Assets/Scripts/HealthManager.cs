@@ -34,5 +34,6 @@ public class HealthManager : MonoBehaviour {
         {
             currentHealth = maxHealth;
         }
+        Debug.Log("Test");
     }
 }

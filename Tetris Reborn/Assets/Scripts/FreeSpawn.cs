@@ -18,7 +18,7 @@ public class FreeSpawn : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "SoldatDroite")
+        if (collision.gameObject.tag == "CibleDroite" || collision.gameObject.tag == "CibleGauche")
         {
             isFree = false;
         }

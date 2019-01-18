@@ -17,9 +17,12 @@ public class MovementSoldier : MonoBehaviour {
     public float shootCooldown;
     public float currentShootCooldown;
 
+    public Animator anim;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         currentShootCooldown = shootCooldown;
         maxSpeedAlly = speedAlly;
         maxSpeedEnemy = speedEnemy;
@@ -45,6 +48,7 @@ public class MovementSoldier : MonoBehaviour {
 
     void Shoot ()
     {
+        anim.SetTrigger("fighting");
         if (isRight == false)
         {
             if (currentShootCooldown < 0)

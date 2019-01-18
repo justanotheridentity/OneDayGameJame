@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 50890237239383074}
   - component: {fileID: 61700362268360724}
   - component: {fileID: 114732012956290052}
+  - component: {fileID: 95038094136343224}
   m_Layer: 0
   m_Name: Spr_TankFr
   m_TagString: SoldatGauche
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536092011350312}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -5.57, y: -2, z: 0}
+  m_LocalPosition: {x: -15.984976, y: 0.6962886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4310286669226548}
@@ -144,6 +145,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0214658, y: 0.82860756}
   m_EdgeRadius: 0
+--- !u!95 &95038094136343224
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536092011350312}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3bf9295736f14e34d922d38e799c9cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114303007328815194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +193,7 @@ MonoBehaviour:
   bullet: {fileID: 1930924872176118, guid: b478f01b145139945b6b1aa7acd8dc48, type: 2}
   shootCooldown: 3
   currentShootCooldown: 0
+  anim: {fileID: 95038094136343224}
 --- !u!212 &212064285622986246
 SpriteRenderer:
   m_ObjectHideFlags: 1

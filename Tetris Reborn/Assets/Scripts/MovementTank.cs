@@ -16,10 +16,13 @@ public class MovementTank : MonoBehaviour {
     public float shootCooldown;
     public float currentShootCooldown;
 
+    public Animator anim;
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         currentShootCooldown = shootCooldown;
         maxSpeedAlly = speedAlly;
         maxSpeedEnemy = speedEnemy;
@@ -50,16 +53,19 @@ public class MovementTank : MonoBehaviour {
         {
             if (currentShootCooldown < 0)
             {
+                anim.SetTrigger("fighting");
                 GameObject projectile = Instantiate(bullet, transform.position + new Vector3(.5f, .05f, 0), Quaternion.identity);
                 projectile.tag = "ProjectileGauche";
                 currentShootCooldown = shootCooldown;
                 Debug.Log("Ratatata");
+                anim.SetTrigger("fighting");
             }
         }
         else
         {
             if (currentShootCooldown < 0)
             {
+                anim.SetTrigger("fighting");
                 GameObject projectile = Instantiate(bullet, transform.position + new Vector3(-.5f, -.05f, 0), Quaternion.identity);
                 projectile.tag = "ProjectileDroite";
                 projectile.GetComponent<BulletMovement>().isRight = true;

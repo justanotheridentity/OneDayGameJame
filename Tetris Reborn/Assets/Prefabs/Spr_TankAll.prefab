@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 50766736648378446}
   - component: {fileID: 61675653156719824}
   - component: {fileID: 114277245209163866}
+  - component: {fileID: 95586447753811192}
   m_Layer: 0
   m_Name: Spr_TankAll
   m_TagString: SoldatDroite
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651254117268834}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 6.583832, y: -2.0552793, z: 0}
+  m_LocalPosition: {x: -16.17, y: -0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4577684906204552}
@@ -144,6 +145,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.489121, y: 0.87800264}
   m_EdgeRadius: 0
+--- !u!95 &95586447753811192
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651254117268834}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f66d44b3028242a4cbc9069c730ea002, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114277245209163866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,6 +180,7 @@ MonoBehaviour:
   bullet: {fileID: 1930924872176118, guid: b478f01b145139945b6b1aa7acd8dc48, type: 2}
   shootCooldown: 2
   currentShootCooldown: 0
+  anim: {fileID: 95586447753811192}
 --- !u!114 &114799070359358396
 MonoBehaviour:
   m_ObjectHideFlags: 1

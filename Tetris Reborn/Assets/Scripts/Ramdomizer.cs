@@ -53,7 +53,7 @@ public class Ramdomizer : MonoBehaviour {
         playAgain.transform.position = new Vector3(7140.6f, -4570.7f, 0);
         scoreManager = GameObject.FindGameObjectWithTag("Detect");
         scoreManager.GetComponent<ScoreManager>().onGame = false;
-        test = scoreManager.GetComponent<ScoreManager>().score;
+        test = ScoreManager.score;
         TimeStamp();
     }
 

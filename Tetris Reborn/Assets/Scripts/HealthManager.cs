@@ -8,9 +8,6 @@ public class HealthManager : MonoBehaviour {
     public float maxHealth;
     public float currentHealth;
 
-    public AudioSource explosion1;
-    public AudioSource explosion2;
-
 	// Use this for initialization
 	void Start () {
         currentHealth = maxHealth;
@@ -30,13 +27,11 @@ public class HealthManager : MonoBehaviour {
 
         if (currentHealth <= maxHealth / 2 && gameObject.tag == "Baracks")
         {
-            explosion1.Play();
             gameObject.GetComponentInParent<Animator>().SetTrigger("damagedTower");
         }
 
         if (currentHealth <= maxHealth / 4 && gameObject.tag == "Baracks")
         {
-            explosion2.Play();
             gameObject.GetComponentInParent<Animator>().SetTrigger("deadTower");
         }
     }

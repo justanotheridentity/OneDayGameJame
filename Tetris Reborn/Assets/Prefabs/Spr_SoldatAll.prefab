@@ -181,7 +181,7 @@ MonoBehaviour:
   shootCooldown: 1
   currentShootCooldown: 0
   anim: {fileID: 95618654151259540}
-  Text: {fileID: 0}
+  Text: {fileID: 1928052261297930, guid: 68cc156f6a8fb1b47ab7a964a468b59a, type: 2}
 --- !u!114 &114664150360810750
 MonoBehaviour:
   m_ObjectHideFlags: 1

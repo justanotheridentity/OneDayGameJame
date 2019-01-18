@@ -8,9 +8,6 @@ public class HealthManager : MonoBehaviour {
     public float maxHealth;
     public float currentHealth;
 
-    public 
-
-
 	// Use this for initialization
 	void Start () {
         currentHealth = maxHealth;
@@ -28,7 +25,14 @@ public class HealthManager : MonoBehaviour {
         {
             Destroy(transform.parent.gameObject);
         }
-
-        
 	}
+
+    public void healUnit(int heal)
+    {
+        currentHealth += heal;
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
 }

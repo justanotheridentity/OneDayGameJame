@@ -22,7 +22,6 @@ public class Spawner : MonoBehaviour {
 	public void spawnNext() {
 		// Spawn Group at current Position
         createGroup(transform.position);
-        //nextId = Random.Range(0, groups.Length);
-        nextId = 3;
+        nextId = Random.Range(0, groups.Length);
 	}
 }

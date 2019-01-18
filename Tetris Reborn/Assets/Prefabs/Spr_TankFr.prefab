@@ -176,6 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 250
   currentHealth: 0
+  explosion1: {fileID: 0}
+  explosion2: {fileID: 0}
 --- !u!114 &114732012956290052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,12 +190,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRight: 0
-  speedAlly: 0.5
-  speedEnemy: 0.3
+  speedAlly: 1
+  speedEnemy: 0.7
   bullet: {fileID: 1930924872176118, guid: b478f01b145139945b6b1aa7acd8dc48, type: 2}
   shootCooldown: 3
   currentShootCooldown: 0
   anim: {fileID: 95038094136343224}
+  Text: {fileID: 0}
 --- !u!212 &212064285622986246
 SpriteRenderer:
   m_ObjectHideFlags: 1

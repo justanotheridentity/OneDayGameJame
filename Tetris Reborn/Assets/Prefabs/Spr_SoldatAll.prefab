@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 61339386783520722}
   - component: {fileID: 114664150360810750}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Cible
   m_TagString: CibleGauche
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,12 +175,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRight: 0
-  speedAlly: 1
-  speedEnemy: 0.7
+  speedAlly: 2
+  speedEnemy: 1.6
   bullet: {fileID: 1930924872176118, guid: cc7e939935e174d429232752dcbcb8bd, type: 2}
   shootCooldown: 1
   currentShootCooldown: 0
   anim: {fileID: 95618654151259540}
+  Text: {fileID: 0}
 --- !u!114 &114664150360810750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  explosion1: {fileID: 0}
+  explosion2: {fileID: 0}
 --- !u!212 &212324765453103696
 SpriteRenderer:
   m_ObjectHideFlags: 1

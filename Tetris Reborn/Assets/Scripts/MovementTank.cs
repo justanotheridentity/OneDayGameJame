@@ -18,6 +18,8 @@ public class MovementTank : MonoBehaviour {
 
     public Animator anim;
 
+    public GameObject Text;
+
     // Use this for initialization
     void Start()
     {
@@ -109,5 +111,10 @@ public class MovementTank : MonoBehaviour {
     {
         speedAlly = maxSpeedAlly;
         speedEnemy = maxSpeedEnemy;
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(Text, transform.position, Quaternion.identity);
     }
 }

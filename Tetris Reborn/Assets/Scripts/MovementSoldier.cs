@@ -19,6 +19,8 @@ public class MovementSoldier : MonoBehaviour {
 
     public Animator anim;
 
+    public GameObject Text;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -105,5 +107,10 @@ public class MovementSoldier : MonoBehaviour {
     {
         speedAlly = maxSpeedAlly;
         speedEnemy = maxSpeedEnemy;
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(Text, transform.position, Quaternion.identity);
     }
 }

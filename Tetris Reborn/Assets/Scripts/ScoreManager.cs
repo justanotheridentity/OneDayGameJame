@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(gameObject);
+        score = 0;
         currentUpCooldown = upCooldown;
         currentScoreCooldown = scoreCooldown;
         onGame = true;
